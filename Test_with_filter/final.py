@@ -30,6 +30,7 @@ for i in range(1,34):
 	thr="threshold_withGaussian/num"+str(i)+".jpg"
 	gr2de="grayimage2denoising/num"+str(i)+".jpg"
 	gr2de2thr="grayimage2denoising2threshold/num"+str(i)+".jpg"
+	de2gray="denoising2gray/num"+str(i)+".jpg"
 	print("processing = image"+str(i))
 	
 	
@@ -38,12 +39,12 @@ for i in range(1,34):
 	thres=detect_text(thr)
 	gray2denoi=detect_text(gr2de)
 	gray2denois2thr=detect_text(gr2de2thr)
+	de2gray=detect_text(de2gray)
 	
-	
-	raw_data={"Image_name":[imagename],"True_label":[label[i-1]],"Predected_label1":[predected_label1[i-1]],"Predected_label2":[predected_label2[i-1]],"Only_Gray_image_text":[gray_text],"Only_Denoising_text":[denoi_text],"Only_Adaptive_threshold_text":[thres],"Gray&Denoising_text":[gray2denoi],"Gray&Denoising&Adaptive_threshold_text":[gray2denois2thr]}
-	column_name = ['Image_name', 'True_label','Predected_label1','Predected_label2','Only_Gray_image_text','Only_Denoising_text','Only_Adaptive_threshold_text','Gray&Denoising_text','Gray&Denoising&Adaptive_threshold_text']
+	raw_data={"Image_name":[imagename],"True_label":[label[i-1]],"Predected_label1":[predected_label1[i-1]],"Predected_label2":[predected_label2[i-1]],"Only_Gray_image_text":[gray_text],"Only_Denoising_text":[denoi_text],"Only_Adaptive_threshold_text":[thres],"Gray&Denoising_text":[gray2denoi],"Gray&Denoising&Adaptive_threshold_text":[gray2denois2thr],"Denoising&Gray":[de2gray]}
+	column_name = ['Image_name', 'True_label','Predected_label1','Predected_label2','Only_Gray_image_text','Only_Denoising_text','Only_Adaptive_threshold_text','Gray&Denoising_text','Gray&Denoising&Adaptive_threshold_text','Denoising&Gray']
 	df = pd.DataFrame(raw_data, columns = column_name)
-	df.to_csv('/home/ganesh/Desktop/test_with_filter/filter_results1.csv', mode='a', header=False)
+	df.to_csv('/home/ganesh/Desktop/testing/Test_with_filter/filter_results2.csv', mode='a', header=False)
 	
 	
 	
